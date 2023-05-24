@@ -1,10 +1,6 @@
 {
   "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/404": "pages/404.html",
-  "/aml-kyc": "pages/aml-kyc.html",
-  "/privacy": "pages/privacy.html",
-  "/": "pages/index.html",
-  "/terms": "pages/terms.html",
-  "/_error": "pages/_error.js"
+  "/": "pages/index.js"
 }

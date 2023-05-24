@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 import {BoardProps} from "@components/molecules/Board/Board";
 
 export const BoardContainer = styled.div<{index: number}>`
@@ -33,6 +33,7 @@ export const BoardTitle = styled.h2`
 export const BoardWrapper = styled.div`
     display: flex;
     flex-direction: row;
+    overflow: hidden;
     align-items: center;
     width: 100%;
   
@@ -43,6 +44,14 @@ export const BoardWrapper = styled.div`
       .board-data {
     
       }
+`;
+
+export const BoardDataWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    align-items: center;
+    width: 100%;
 `;
 
 export const BoardPlace = styled.div<{ place: number }>`
@@ -60,18 +69,39 @@ export const BoardPlace = styled.div<{ place: number }>`
 `;
 
 
+const showRest = keyframes`
+  0% {
+    left: 0;
+  }
+  25% {
+    left: -10%;
+  }
+  50% {
+    left: 0;
+  }
+`;
+
+
+
 export const BoardData = styled.div`
   display: block;
   width: 100%;
   height: 100%;
   color: #7ecb58;
   min-width: 180px;
+  position: relative;
   font-weight: bold;
+  white-space: nowrap;
   
-    @media (min-width: 1920px) {
-        min-width: 250px;
-    }
+  &.expand {
+    animation: ${({}) => showRest} 20s infinite;
+  }
+
+  @media (min-width: 1920px) {
+    min-width: 250px;
+  }
 `;
+
 
 export const BoardPoints = styled.div`
   display: block;

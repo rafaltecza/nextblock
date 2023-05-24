@@ -1,6 +1,6 @@
 import {
     BoardContainer,
-    BoardData,
+    BoardData, BoardDataWrapper,
     BoardPlace,
     BoardPoints,
     BoardWrapper
@@ -18,7 +18,9 @@ const BoardEntity = ({ type = 'secondary',...props }: BoardEntityProps) => {
         <BoardContainer className={type} index={props.index}>
             <BoardPlace place={props.place}>{props.place === 0 ? 1 : props.place}</BoardPlace>
             <BoardWrapper>
-                <BoardData>{props.entity.name}</BoardData>
+                <BoardDataWrapper>
+                    <BoardData className={props.entity.name.length > 16 ? 'expand' : ''}>{props.entity.name}</BoardData>
+                </BoardDataWrapper>
                 <BoardPoints>{props.entity.points}</BoardPoints>
             </BoardWrapper>
         </BoardContainer>

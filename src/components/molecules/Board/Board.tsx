@@ -8,12 +8,14 @@ export interface BoardProps {
 
 }
 const Board = ({items, type = 'primary'}: BoardProps) => {
+    const limitedItems = items.slice(0, 14);
+
     return (
         <>
             {/*<BoardTitle>Yesterday's High Score</BoardTitle>*/}
             {/*<BoardEntity type={'primary'} index={0} entity={{name: '-', points: '-'}} place={0}/>*/}
             <BoardEntityContainer className={type}>
-                {items.map((item, index) => {
+                {limitedItems.map((item, index) => {
                     return <BoardEntity index={index} entity={item} place={index + 1}/>
                 })}
             </BoardEntityContainer>

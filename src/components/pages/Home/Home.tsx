@@ -336,7 +336,7 @@ const Home = () => {
                                        width={585}
                                        allowFullScreen={false} // Usuwanie nawigacji (przycisk fullscreen)
                                        allow="autoplay; fullscreen" // Dodanie atrybutu 'autoplay' i dozwolonego fullscreen
-                                       height={330} src={'/videos/present.webm'} autoPlay loop/>
+                                       height={330} src={'/videos/vid.mp4'} autoPlay loop/>
                         <DownloadContainer>
                             <CustomImage className={'shadow-xl'} src={'/images/qr/QR_code.png'} alt={''} width={200} height={200}></CustomImage>
                             <VendorsContainer>
