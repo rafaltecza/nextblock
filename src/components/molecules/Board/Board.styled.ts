@@ -63,9 +63,12 @@ export const BoardPlace = styled.div<{ place: number }>`
   text-align: center;
   background-color: rgba(0, 0, 0, 0.1);
   color: #4fa051;
-  ${({ place }) =>
-    (place === 0 || place === 1 || place === 2 || place === 3) &&
-    `color: #28594d; background-image: url("/images/icons/board/Frame_leaderboards_DIY_${place}.png");`}
+  background-size: cover;
+  ${({place}) =>
+      (place === 0 || place === 1 || place === 2 || place === 3) &&
+      `border-bottom: 1px solid #2a463e; color: #28594d; background-image: url("/images/icons/board/Frame_leaderboards_DIY_${place}.png");`}
+}
+
 `;
 
 
@@ -124,11 +127,12 @@ export const BoardEntityContainer = styled.div`
         background-repeat: no-repeat;
         background-size: cover;
         width: 100%;
-        height: 48%;
+        height: 42.5%;
         position: absolute;
-        top: 0;
+        top: -2px;
         opacity: 0.1;
-        left: 0;
+        left: -2px;
+        border: 2px solid white;
       }
     }
 `;

@@ -5,6 +5,7 @@ export interface CardProps {
     children: React.ReactNode;
     body?: boolean;
     type?: "primary" | "secondary";
+    style?: React.CSSProperties;
 }
 
 const Card = ({ children, type, ...props }: CardProps) => {

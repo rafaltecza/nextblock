@@ -16,7 +16,7 @@ const Navigation: React.FC = () => {
         <NavigationContainer>
             <NavigationLogoContainer>
                 <CustomImage width={360}
-                             height={80}
+                             height={84}
                              src={'/images/logo/logo.png'}
                              onClick={() => router.push(Routes.HOME)}
                              alt={'logo'}

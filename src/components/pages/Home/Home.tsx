@@ -13,10 +13,22 @@ import Form from "@components/organisms/Form/Form";
 import CustomForm from "@components/organisms/Form/Form";
 import {
     DownloadContainer,
-    HomeContainer, InfoContainer, LeaderBoardContainer,
-    LeftContainer, MainPrizeBackground, MainPrizeContainer, PrizeBackground,
-    PrizeContainer, PrizeImageContainer,
-    PrizesContainer, RightContainer, SectionContainer, TitleContainer, TournamentLogoContainer, VendorsContainer
+    HomeContainer,
+    InfoContainer,
+    LeaderBoardContainer,
+    LeftContainer,
+    MainPrizeBackground,
+    MainPrizeContainer,
+    PrizeBackground,
+    PrizeContainer,
+    PrizeImageContainer,
+    PrizesContainer,
+    ProviderContainer,
+    RightContainer,
+    SectionContainer,
+    TitleContainer,
+    TournamentLogoContainer,
+    VendorsContainer
 } from "@views/Home/Home.styled";
 import CustomImage from "@components/atoms/Image/Image";
 import Video from "@components/atoms/Video/Video";
@@ -118,7 +130,7 @@ const Home = () => {
             );
             return {
                 name: nicknameEntry ? nicknameEntry.nickname : "Unknown",
-                points: Math.floor(entry.points), // use Math.floor to round down the points
+                points: Math.round(entry.points),
             };
         });
 
@@ -135,7 +147,7 @@ const Home = () => {
         <MainTemplate>
             <HomeContainer>
                 <LeftContainer>
-                    <Card body={false}>
+                    <Card style={{overflow: 'visible'}} body={false}>
                         <LeaderBoardContainer>
                             <TitleContainer justifyContent={'space-between'}>
                                 <Title size="1.5rem"
@@ -340,11 +352,16 @@ const Home = () => {
                         <DownloadContainer>
                             <CustomImage className={'shadow-xl'} src={'/images/qr/QR_code.png'} alt={''} width={200} height={200}></CustomImage>
                             <VendorsContainer>
-                                <CustomImage src={'/images/vendors/Download_Button_AppStore.png'} alt={''} width={200} height={58}></CustomImage>
-                                <CustomImage src={'/images/vendors/Download_Button_Google.png'} alt={''} width={200} height={58}></CustomImage>
+                                <CustomImage className={'shadow-xl'} src={'/images/vendors/Download_Button_AppStore.png'} alt={''} width={200} height={58}></CustomImage>
+                                <CustomImage className={'shadow-xl'} src={'/images/vendors/Download_Button_Google.png'} alt={''} width={200} height={58}></CustomImage>
                             </VendorsContainer>
                         </DownloadContainer>
                     </SectionContainer>
+
+                    <ProviderContainer>
+                        <CustomImage src={'/images/vendors/Powered_By.png'} alt={''} width={300} height={33}></CustomImage>
+                    </ProviderContainer>
+
 
                 </RightContainer>
             </HomeContainer>

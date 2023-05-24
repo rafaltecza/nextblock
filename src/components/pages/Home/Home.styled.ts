@@ -110,6 +110,10 @@ export const SectionContainer = styled.div`
     gap: 2rem;
 `;
 
+export const ProviderContainer = styled.div`
+    margin-top: auto;
+`;
+
 export const VendorsContainer = styled.div`
     display: flex;
     flex-direction: column;

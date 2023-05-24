@@ -54,8 +54,8 @@ const Video = ({src, height = 720, width = 1280, className, ...props}: VideoProp
 
     return (
         <VideoContainer>
-            <StyledVideo ref={videoRef1} autoPlay width={width} height={height} src={src}/>
-            <StyledVideo ref={videoRef2} style={{display: 'none'}} width={width} height={height} src={src}/>
+            <StyledVideo className={className} ref={videoRef1} autoPlay width={width} height={height} src={src}/>
+            <StyledVideo className={className} ref={videoRef2} style={{display: 'none'}} width={width} height={height} src={src}/>
         </VideoContainer>
     );
 };
