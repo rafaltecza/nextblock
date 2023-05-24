@@ -92,12 +92,18 @@ const Home = () => {
         return () => clearInterval(intervalId); //This is important
     }, []);
 
+    function isValidDate(date) {
+        return date instanceof Date && !isNaN(date);
+    }
 
     // const leaderboardTimer = leaderboardData !== null ? leaderboardData?.DateTo : 'Loading...'
     useEffect(() => {
         if (leaderboardData) {
-            setTargetDate(new Date(leaderboardData.DateTo).toISOString());
-        }
+            if (isValidDate(new Date(leaderboardData.DateTo))) {
+                setTargetDate(new Date(leaderboardData.DateTo).toISOString());
+            } else {
+                console.error('Invalid date:', leaderboardData.DateTo);
+            }        }
     }, [leaderboardData]);
 
     const hours = timer.hours || 0;
