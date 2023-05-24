@@ -92,14 +92,9 @@ const Home = () => {
         return () => clearInterval(intervalId); //This is important
     }, []);
 
-    function isValidDate(date) {
-        return date instanceof Date && !isNaN(date);
-    }
-
     // const leaderboardTimer = leaderboardData !== null ? leaderboardData?.DateTo : 'Loading...'
     useEffect(() => {
         if (leaderboardData) {
-            if (isValidDate(new Date(leaderboardData.DateTo))) {
                 try {
                     setTargetDate(new Date(leaderboardData.DateTo)?.toISOString());
 
@@ -107,9 +102,7 @@ const Home = () => {
                     console.error('Error parsing date:', leaderboardData.DateTo);
                     console.error(e);
                 }
-            } else {
-                console.error('Invalid date:', leaderboardData.DateTo);
-            }        }
+            }
     }, [leaderboardData]);
 
     const hours = timer.hours || 0;
