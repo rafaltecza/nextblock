@@ -100,7 +100,13 @@ const Home = () => {
     useEffect(() => {
         if (leaderboardData) {
             if (isValidDate(new Date(leaderboardData.DateTo))) {
-                setTargetDate(new Date(leaderboardData.DateTo).toISOString());
+                try {
+                    setTargetDate(new Date(leaderboardData.DateTo)?.toISOString());
+
+                } catch (e) {
+                    console.error('Error parsing date:', leaderboardData.DateTo);
+                    console.error(e);
+                }
             } else {
                 console.error('Invalid date:', leaderboardData.DateTo);
             }        }
