@@ -17,7 +17,7 @@ export interface BoardEntityProps {
 const BoardEntity = ({ type = 'secondary',...props }: BoardEntityProps) => {
     return (
         <BoardContainer className={type} index={props.index}>
-            <BoardPlace place={props.place} index={props.index}>{props.place === 0 ? 1 : props.place}</BoardPlace>
+            <BoardPlace place={props.place}>{props.place === 0 ? 1 : props.place}</BoardPlace>
             <BoardWrapper>
                 <BoardData index={props.index}>{props.entity.name}</BoardData>
                 <BoardPoints index={props.index}>{props.entity.points}</BoardPoints>
