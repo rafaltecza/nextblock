@@ -2,6 +2,7 @@ import {StyledTitle} from "@components/atoms/Title/Title.styled";
 import React from "react";
 
 export interface TitleProps {
+    children: React.ReactNode;
     color1: string;
     color2: string;
     size?: string;

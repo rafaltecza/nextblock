@@ -1,9 +1,9 @@
 import {StyledParticleAnimation, StyledParticleContainer} from "@components/atoms/Particle/Particle.styled";
 import CustomImage from "@components/atoms/Image/Image";
 
-const Particle = ({ color = 'blue', size, width = 300, height = 300, ...props }) => {
+const Particle = ({ color = 'blue', size = "", width = 300, height = 300, ...props }) => {
     return (
-        <StyledParticleContainer color={color} size={size} {...props}>
+        <StyledParticleContainer {...props}>
             <StyledParticleAnimation>
                 <CustomImage src={`/images/icons/decoration/Prize_Glow_${color}.png`} alt={''} width={width} height={height}/>
             </StyledParticleAnimation>

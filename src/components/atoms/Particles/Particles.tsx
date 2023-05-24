@@ -14,9 +14,9 @@ export interface ParticlesProps {
     animationTime?: string;
 }
 
-const Particles = ({ color = 'Blue', animationTime = '10s', rotate, size, width = 300, height = 300, ...props }) => {
+const Particles = ({ color = 'Blue', animationTime = '10s', rotate = "0", size = "10", width = 300, height = 300, ...props }) => {
     return (
-        <StyledParticlesContainer rotate={rotate} color={color} size={size} {...props}>
+        <StyledParticlesContainer rotate={rotate} color={color} {...props}>
             <CustomImage animationTime={animationTime} animation={"rotateAnimation"} animate={true} src={`/images/icons/decoration/Prize_Glow_${color}.png`} alt={''} width={width} height={height}/>
         </StyledParticlesContainer>
     );

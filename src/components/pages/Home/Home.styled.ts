@@ -110,15 +110,6 @@ export const SectionContainer = styled.div`
     gap: 2rem;
 `;
 
-export const Row = styled.div`
-  display: flex;
-`;
-
-export const Column = styled.div`
-  flex: ${({ isLast }) => (isLast ? 0.3 : 1)};
-`;
-
-
 export const VendorsContainer = styled.div`
     display: flex;
     flex-direction: column;

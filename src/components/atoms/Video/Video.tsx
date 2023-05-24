@@ -5,9 +5,16 @@ interface VideoProps {
     height?: number;
     width?: number;
     src: string;
+    frameBorder?: string;
+    fit?: string;
+    allowFullScreen?: boolean;
+    allow?: string;
+    autoPlay?: boolean;
+    loop?: boolean;
+    className?: string;
 }
 
-const Video = ({src, height = 720, width = 1280, ...props}: VideoProps) => {
+const Video = ({src, height = 720, width = 1280, className, ...props}: VideoProps) => {
     const videoRef1 = useRef<HTMLVideoElement | null>(null);
     const videoRef2 = useRef<HTMLVideoElement | null>(null);
     const loopPoint = 48;

@@ -9,12 +9,6 @@ export const StyledLabel = styled.label<StylingProps>`
   text-align: ${props => props.textAlign};
   color: ${props => props.color};
   font-weight: ${props => props.fontWeight};
-  white-space: ${props => props.whiteSpace};
-  // margin-top: ${props => props.marginTop};
-  line-height: ${props => props.lineHeight};
-  ${props => props.styleType === StyleType.DEFAULT && css`
-
-  `}
 
   ${props => props.styleType === StyleType.PRIMARY && css`
     font-style: normal;

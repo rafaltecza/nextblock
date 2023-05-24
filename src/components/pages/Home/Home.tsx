@@ -32,8 +32,19 @@ import Particle from "@components/atoms/Particle/Particle";
 import Particles from "@components/atoms/Particles/Particles";
 
 const Home = () => {
-    const [leaderboardData, setLeaderboardData] = useState<LeaderboardEntry>(null);
-    const [streamlitData, setStreamlitData] = useState<StreamlitLeaderboardResponse>(null);
+    const [leaderboardData, setLeaderboardData] = useState<LeaderboardEntry>({
+        "GameId": "",
+        "GameVersion": "",
+        "LeaderboardGameVersion": "",
+        "QueueName": "",
+        "TimeScope": "",
+        "DateFrom": "",
+        "DateTo": "",
+    });
+    const [streamlitData, setStreamlitData] = useState<StreamlitLeaderboardResponse>({
+        "nicknames": [],
+        "data": [],
+    });
     const [targetDate, setTargetDate] = useState(new Date().toISOString());
     const timer = useCountdownTimer(targetDate);
     const MINIMUM_PLAYERS = 12;
@@ -94,7 +105,7 @@ const Home = () => {
     const seconds = timer.seconds || 0;
     const timerDisplay = `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
 
-    let leaderboardDataConverted = [];
+    let leaderboardDataConverted: {name: string, points: number}[] = [];
     if (streamlitData) {
         leaderboardDataConverted = streamlitData.data.map((entry) => {
             const nicknameEntry = streamlitData.nicknames.find(
@@ -110,7 +121,7 @@ const Home = () => {
         while (leaderboardDataConverted.length < MINIMUM_PLAYERS) {
             leaderboardDataConverted.push({
                 name: "-",
-                points: "-",
+                points: 0,
             });
         }
     }
@@ -264,7 +275,7 @@ const Home = () => {
                                 </PrizeContainer>
                             </PrizesContainer>
                             <PrizesContainer>
-                                <MainPrizeContainer>
+                                <MainPrizeContainer marginTop={"0"}>
                                     <Title size="1.6rem"
                                            textAlign={'center'}
                                            whiteSpace="nowrap"

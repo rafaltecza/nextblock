@@ -12,9 +12,9 @@ export interface SparkProps {
     bottom?: string;
 }
 
-const Spark = ({ color = 'Blue', size, width = 300, height = 300, ...props }) => {
+const Spark = ({ color = 'Blue', size = "20", width = 300, height = 300, ...props }) => {
     return (
-        <StyledSparkContainer color={color} size={size} {...props}>
+        <StyledSparkContainer color={color} {...props}>
             <CustomImage animate={true} src={`/images/icons/glimmer/Glimmer_${color}.png`} alt={''} width={width} height={height}/>
         </StyledSparkContainer>
     );

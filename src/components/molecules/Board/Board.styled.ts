@@ -83,7 +83,7 @@ export const BoardPoints = styled.div`
   text-align: right;
 `;
 
-export const BoardEntityContainer = styled.div<BoardProps>`
+export const BoardEntityContainer = styled.div`
   width: 100%;
   position: relative;
 

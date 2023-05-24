@@ -3,6 +3,7 @@ import Image from "next/image";
 import * as S from "./Image.styled";
 
 export interface ImageProps {
+    className?: string;
     src: string;
     alt: string;
     width: number;
@@ -17,7 +18,7 @@ export interface ImageProps {
 }
 
 const CustomImage = ({ useContainer = true, animation, animationTime = '1.3s', animate = false, style, ...props }: ImageProps) => {
-    const ImageContent = <Image quality={100} onClick={props.onClick} width={props.width} height={props.height} alt={props.alt} src={props.src} {...props}/>;
+    const ImageContent = <Image quality={100} onClick={props.onClick} {...props}/>;
 
     if (useContainer) {
         return (

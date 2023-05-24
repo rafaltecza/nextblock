@@ -10,7 +10,6 @@ export interface BoardEntityProps {
     index: number;
     entity: any;
     place: number;
-    points: number;
     type?: "primary" | "secondary";
 }
 

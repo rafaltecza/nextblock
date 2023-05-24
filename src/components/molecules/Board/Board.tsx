@@ -4,12 +4,8 @@ import {BoardEntityContainer, BoardTitle} from "@components/molecules/Board/Boar
 
 export interface BoardProps {
     type?: "primary" | "secondary";
-    items: [
-        {
-            name: string;
-            points: number | string;
-        }
-    ]
+    items: {name: string, points: number}[];
+
 }
 const Board = ({items, type = 'primary'}: BoardProps) => {
     return (
