@@ -19,8 +19,8 @@ const BoardEntity = ({ type = 'secondary',...props }: BoardEntityProps) => {
         <BoardContainer className={type} index={props.index}>
             <BoardPlace place={props.place}>{props.place === 0 ? 1 : props.place}</BoardPlace>
             <BoardWrapper>
-                <BoardData index={props.index}>{props.entity.name}</BoardData>
-                <BoardPoints index={props.index}>{props.entity.points}</BoardPoints>
+                <BoardData>{props.entity.name}</BoardData>
+                <BoardPoints>{props.entity.points}</BoardPoints>
             </BoardWrapper>
         </BoardContainer>
     )
