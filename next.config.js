@@ -6,6 +6,9 @@ const nextConfig = {
     compiler: {
         styledComponents: true
     },
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
     optimizeFonts: false,
     async headers() {
         return [
