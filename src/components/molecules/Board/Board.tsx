@@ -8,7 +8,7 @@ export interface BoardProps {
 
 }
 const Board = ({items, type = 'primary'}: BoardProps) => {
-    const limitedItems = items.slice(0, 14);
+    const limitedItems = items.slice(0, 12);
 
     return (
         <>

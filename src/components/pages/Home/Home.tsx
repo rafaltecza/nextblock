@@ -159,6 +159,7 @@ const Home = () => {
                                     <span>Leaderboard<br/> closes in</span>
                                 </Title>
                                 <Title size="2.5rem"
+                                       animate={true}
                                        whiteSpace="nowrap"
                                        weight="800"
                                        textBorderColor="#000"
@@ -245,7 +246,7 @@ const Home = () => {
                                             height={88}/>
                                     </PrizeImageContainer>
 
-                                    <Spark color={'Gold'} width={30} height={30} left={"10%"} top={"20%"}/>
+                                    <Spark color={'Gold'} width={30} height={30} left={"2%"} top={"20%"}/>
                                     <Label fontWeight={'bold'}
                                            color={'#7ecb58'}
                                            size={22}
@@ -268,9 +269,9 @@ const Home = () => {
                                                      width={155}
                                                      height={95}/>
                                     </PrizeImageContainer>
-                                    <Spark color={'Gold'} width={25} height={25} left={"3%"} top={"30%"}/>
-                                    <Spark color={'Gold'} width={20} height={20} right={"3%"} top={"5%"}/>
-                                    <Spark color={'Gold'} width={30} height={30} right={"15%"} top={"40%"}/>
+                                    <Spark color={'Gold'} width={25} height={25} left={"-3%"} top={"30%"}/>
+                                    <Spark color={'Gold'} width={20} height={20} right={"0"} top={"5%"}/>
+                                    <Spark color={'Gold'} width={30} height={30} right={"15%"} top={"35%"}/>
 
                                     <Label fontWeight={'bold'}
                                            color={'#7ecb58'}
