@@ -38,7 +38,11 @@ import Points from "@components/atoms/Points/Points";
 import React, {useEffect, useState} from "react";
 import {fetchLeaderboard, LeaderboardEntry} from "@api/endpoints/leaderboard";
 import useCountdownTimer from "../../../hooks/useCountdownTimer";
-import {fetchStreamlitLeaderboard, StreamlitLeaderboardResponse} from "@api/endpoints/streamlitLeaderboard";
+import {
+    fetchStreamlitLeaderboard,
+    StreamlitLeaderboardEntry,
+    StreamlitLeaderboardResponse
+} from "@api/endpoints/streamlitLeaderboard";
 import Spark from "@components/atoms/Spark/Spark";
 import Particle from "@components/atoms/Particle/Particle";
 import Particles from "@components/atoms/Particles/Particles";
@@ -77,16 +81,48 @@ const Home = () => {
         console.log(streamlitData?.nicknames);
     }, [streamlitData]);
 
+    const removeDuplicates = (leaderboardResponse: StreamlitLeaderboardResponse): StreamlitLeaderboardResponse => {
+        // Tworzenie mapy użytkowników według ich najwyższej pozycji.
+        const userIdToHighestEntry: Record<string, StreamlitLeaderboardEntry> = {};
+        for (const entry of leaderboardResponse.data) {
+            if (!userIdToHighestEntry[entry.userId] ||
+                userIdToHighestEntry[entry.userId].position > entry.position) {
+                userIdToHighestEntry[entry.userId] = entry;
+            }
+        }
+
+        // Filtrujemy wpisy w 'nicknames', aby zawierały tylko wpisy z unikalnymi pseudonimami.
+        const nicknameSet = new Set();
+        const uniqueNicknames = leaderboardResponse.nicknames.filter(entry => {
+            if (nicknameSet.has(entry.nickname)) {
+                // Usuń wpis z 'userIdToHighestEntry', jeśli pseudonim nie jest unikalny.
+                delete userIdToHighestEntry[entry.elympics_user_id];
+                return false;
+            } else {
+                nicknameSet.add(entry.nickname);
+                return true;
+            }
+        });
+
+        return {
+            data: Object.values(userIdToHighestEntry),
+            nicknames: uniqueNicknames
+        } as StreamlitLeaderboardResponse;
+    }
+
     useEffect(() => {
         const fetchData = async () => {
             const data = await fetchStreamlitLeaderboard();
-            setStreamlitData(data);
+
+            setStreamlitData(removeDuplicates(data));
         };
 
         fetchData().catch((e) => {
             console.error(e);
         });
     }, []);
+
+
 
 
     useEffect(() => {
