@@ -86,20 +86,32 @@ const Home = () => {
         const userIdToHighestEntry: Record<string, StreamlitLeaderboardEntry> = {};
         for (const entry of leaderboardResponse.data) {
             if (!userIdToHighestEntry[entry.userId] ||
-                userIdToHighestEntry[entry.userId].position > entry.position) {
+                userIdToHighestEntry[entry.userId].position > entry.position ||
+                (userIdToHighestEntry[entry.userId].position === entry.position &&
+                    userIdToHighestEntry[entry.userId].points < entry.points)) {
                 userIdToHighestEntry[entry.userId] = entry;
             }
         }
 
         // Filtrujemy wpisy w 'nicknames', aby zawierały tylko wpisy z unikalnymi pseudonimami.
-        const nicknameSet = new Set();
+        const nicknameToUserId: Record<string, string> = {};
         const uniqueNicknames = leaderboardResponse.nicknames.filter(entry => {
-            if (nicknameSet.has(entry.nickname)) {
-                // Usuń wpis z 'userIdToHighestEntry', jeśli pseudonim nie jest unikalny.
-                delete userIdToHighestEntry[entry.elympics_user_id];
-                return false;
+            if (nicknameToUserId[entry.nickname]) {
+                // Sprawdzamy, który wpis ma więcej punktów i zachowujemy ten wpis.
+                const existingEntry = userIdToHighestEntry[nicknameToUserId[entry.nickname]];
+                const newEntry = userIdToHighestEntry[entry.elympics_user_id];
+                if (newEntry && (existingEntry.points < newEntry.points)) {
+                    // Usuwamy stary wpis i zastępujemy go nowym.
+                    delete userIdToHighestEntry[nicknameToUserId[entry.nickname]];
+                    nicknameToUserId[entry.nickname] = entry.elympics_user_id;
+                    return true;
+                } else {
+                    // Usuwamy nowy wpis.
+                    delete userIdToHighestEntry[entry.elympics_user_id];
+                    return false;
+                }
             } else {
-                nicknameSet.add(entry.nickname);
+                nicknameToUserId[entry.nickname] = entry.elympics_user_id;
                 return true;
             }
         });
@@ -107,7 +119,7 @@ const Home = () => {
         return {
             data: Object.values(userIdToHighestEntry),
             nicknames: uniqueNicknames
-        } as StreamlitLeaderboardResponse;
+        };
     }
 
     useEffect(() => {
@@ -121,8 +133,6 @@ const Home = () => {
             console.error(e);
         });
     }, []);
-
-
 
 
     useEffect(() => {
