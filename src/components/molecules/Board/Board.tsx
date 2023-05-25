@@ -12,8 +12,8 @@ const Board = ({items, type = 'primary'}: BoardProps) => {
 
     return (
         <>
-            {/*<BoardTitle>Yesterday's High Score</BoardTitle>*/}
-            {/*<BoardEntity type={'primary'} index={0} entity={{name: '-', points: '-'}} place={0}/>*/}
+            <BoardTitle>Yesterday's High Score</BoardTitle>
+            <BoardEntity type={'primary'} index={0} entity={{name: 'Agrael', points: '1596'}} place={0}/>
             <BoardEntityContainer className={type}>
                 {limitedItems.map((item, index) => {
                     return <BoardEntity index={index} entity={item} place={index + 1}/>
