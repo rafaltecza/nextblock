@@ -129,7 +129,7 @@ const Home = () => {
         const intervalId = setInterval(() => {
             const fetchData = async () => {
                 const data = await fetchStreamlitLeaderboard();
-                setStreamlitData(data);
+                setStreamlitData(removeDuplicates(data));
             };
 
             fetchData().catch((e) => {

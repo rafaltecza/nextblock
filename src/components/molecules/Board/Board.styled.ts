@@ -127,7 +127,7 @@ export const BoardEntityContainer = styled.div`
         background-repeat: no-repeat;
         background-size: cover;
         width: 100%;
-        height: 42.5%;
+        height: 50%;
         position: absolute;
         top: -2px;
         opacity: 0.1;
