@@ -360,7 +360,7 @@ const Home = () => {
                     </SectionContainer>
 
                     <ProviderContainer>
-                        <CustomImage src={'/images/vendors/Powered_By.png'} alt={''} width={300} height={33}></CustomImage>
+                        <CustomImage style={{filter: 'brightness(0)'}} src={'/images/vendors/Powered_By.png'} alt={''} width={300} height={33}></CustomImage>
                     </ProviderContainer>
 
 

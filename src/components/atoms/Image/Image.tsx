@@ -17,7 +17,7 @@ export interface ImageProps {
     style?: React.CSSProperties;
 }
 
-const CustomImage = ({ useContainer = true, animation, animationTime = '1.3s', animate = false, style, ...props }: ImageProps) => {
+const CustomImage = ({ useContainer = true, animation, animationTime = '1.3s', animate = false, ...props }: ImageProps) => {
     const ImageContent = <Image quality={100} onClick={props.onClick} {...props}/>;
 
     if (useContainer) {
